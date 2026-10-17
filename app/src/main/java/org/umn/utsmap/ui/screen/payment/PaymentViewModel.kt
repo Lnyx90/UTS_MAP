@@ -4,6 +4,9 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import org.umn.utsmap.data.model.Invoice
 
 class PaymentViewModel : ViewModel() {
@@ -11,6 +14,9 @@ class PaymentViewModel : ViewModel() {
         private set
 
     var paymentStatus by mutableStateOf("Belum dibayar")
+        private set
+
+    var isLoading by mutableStateOf(false)
         private set
 
     val invoice = Invoice(
@@ -33,6 +39,13 @@ class PaymentViewModel : ViewModel() {
     }
 
     fun payNow() {
-        paymentStatus = "Menunggu Verifikasi"
+        if (isLoading) return
+        viewModelScope.launch {
+            isLoading = true
+            paymentStatus = "Menunggu Verifikasi"
+            delay(1500) // simulasi verifikasi
+            paymentStatus = "Lunas"
+            isLoading = false
+        }
     }
 }

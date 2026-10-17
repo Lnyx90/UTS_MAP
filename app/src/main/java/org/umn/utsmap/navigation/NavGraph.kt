@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import org.umn.utsmap.ui.screen.application.ApplicationScreen
 import org.umn.utsmap.ui.screen.detail.DetailScreen
+import org.umn.utsmap.ui.screen.notification.NotificationScreen
 import org.umn.utsmap.ui.screen.payment.PaymentScreen
 import org.umn.utsmap.ui.screen.search.SearchScreen
 
@@ -49,8 +50,13 @@ fun NavGraph() {
             PaymentScreen(
                 onBackClick = { navController.popBackStack() },
                 onPaymentSuccess = {
-                    // Nanti dilanjutkan ke Checkpoint 5 (NotificationScreen)
+                    navController.navigate(ScreenRoutes.Notification.route)
                 }
+            )
+        }
+        composable(route = ScreenRoutes.Notification.route) {
+            NotificationScreen(
+                onBackClick = { navController.popBackStack() }
             )
         }
     }

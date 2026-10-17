@@ -7,4 +7,5 @@ sealed class ScreenRoutes(val route: String) {
     }
     object Application : ScreenRoutes("application")
     object Payment : ScreenRoutes("payment")
+    object Notification : ScreenRoutes("notification")
 }
