@@ -4,11 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import org.umn.utsmap.ui.screen.search.SearchScreen
+import org.umn.utsmap.navigation.NavGraph
 import org.umn.utsmap.ui.theme.KostellaTheme
 
 class MainActivity : ComponentActivity() {
@@ -17,12 +15,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             KostellaTheme {
-                // Memanggil SearchScreen dari Checkpoint 1
-                SearchScreen(
-                    onKosClick = { kosId ->
-                        // Nanti di Checkpoint 2 kita isi navigasi ke Detail Screen di sini
-                    }
-                )
+                // Memanggil NavGraph untuk menangani seluruh navigasi aplikasi (Checkpoint 2)
+                NavGraph()
             }
         }
     }
@@ -32,6 +26,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun KostellaAppPreview() {
     KostellaTheme {
-        SearchScreen(onKosClick = {})
+        NavGraph()
     }
 }
