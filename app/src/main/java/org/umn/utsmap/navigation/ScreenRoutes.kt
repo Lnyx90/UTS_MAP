@@ -6,4 +6,5 @@ sealed class ScreenRoutes(val route: String) {
         fun createRoute(kosId: Int) = "detail/$kosId"
     }
     object Application : ScreenRoutes("application")
+    object Payment : ScreenRoutes("payment")
 }
