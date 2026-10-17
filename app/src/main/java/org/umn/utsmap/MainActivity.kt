@@ -15,7 +15,6 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             KostellaTheme {
-                // Memanggil NavGraph untuk menangani seluruh navigasi aplikasi (Checkpoint 2)
                 NavGraph()
             }
         }

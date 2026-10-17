@@ -25,14 +25,15 @@ org.umn.utsmap/
 │       ├── [x] kos2.jpg
 │       ├── [x] kos3.jpg
 │       ├── [x] kos4.jpg
-│       └── [x] map.png
+│       ├── [x] map.png
+│       └── [x] qris.png
 │
 ├── data/
 │   ├── model/
 │   │   ├── [x] Kos.kt
 │   │   ├── [x] ApplicationForm.kt
-│   │   ├── [ ] Invoice.kt
-│   │   └── [ ] NotificationItem.kt
+│   │   ├── [x] Invoice.kt
+│   │   └── [x] NotificationItem.kt
 │   └── dummy/
 │       └── [x] DummyData.kt
 │
@@ -45,7 +46,7 @@ org.umn.utsmap/
 │   ├── components/
 │   │   ├── [x] KostellaBottomBar.kt
 │   │   ├── [x] KosCard.kt
-│   │   ├── [ ] NotificationCard.kt
+│   │   ├── [x] NotificationCard.kt
 │   │   └── [x] StepIndicator.kt
 │   └── screen/
 │       ├── search/
@@ -58,11 +59,11 @@ org.umn.utsmap/
 │       │   ├── [x] ApplicationScreen.kt
 │       │   └── [x] ApplicationViewModel.kt
 │       ├── payment/
-│       │   ├── [ ] PaymentScreen.kt
-│       │   └── [ ] PaymentViewModel.kt
+│       │   ├── [x] PaymentScreen.kt
+│       │   └── [x] PaymentViewModel.kt
 │       └── notification/
-│           ├── [ ] NotificationScreen.kt
-│           └── [ ] NotificationViewModel.kt
+│           ├── [x] NotificationScreen.kt
+│           └── [x] NotificationViewModel.kt
 │
 └── navigation/
 ├── [x] NavGraph.kt
@@ -90,7 +91,7 @@ SCREEN 2: LAYAR DETAIL — DetailScreen (Kriteria Rubrik: Detail Screen)
 - UI Components:
     * Top Bar: Navigation Back Button, Title "Detail kos", More options action button.
     * Photo Gallery Section: Main photo + side thumbnail grid dengan badge "1/8 foto".
-    * Header Info: Nama Kos ("Kos Cemara Residence"), Alamat ("Jl. Kaliurang Km 4,5, Sleman, Yogyakarta"), Rating & Ulasan ("4,8 (32 ulasan) - Kos putri").
+    * Header Info: Nama Kos, Alamat, Rating & Ulasan.
     * Pricing Breakdown Card:
         - Sewa / bulan: Rp1.200.000
         - Listrik (tarif tetap): Rp100.000
@@ -98,85 +99,118 @@ SCREEN 2: LAYAR DETAIL — DetailScreen (Kriteria Rubrik: Detail Screen)
         - Laundry (pilihan 5 kg): Rp75.000
         - Total dengan laundry: Rp1.425.000 (Bold Primary Color).
     * Facilities Row: Badges ikon (AC, Wi-Fi, KM dalam, Ukuran 3x4 m).
-    * Location & Distance Section: Distance items ("800 m ke UGM", "100 m ke warung", "50 m ke jalan utama").
-    * Static Map Preview Mockup: Card berisi gambar peta lokasi sekitar kampus UGM.
+    * Location & Distance Section: Distance items.
+    * Static Map Preview Mockup: Card berisi gambar peta lokasi.
     * Sticky Bottom Action Bar: Button "Ajukan Sewa" full width.
 - Navigation Argument: Accepting kosId dynamically from SearchScreen.
 
 SCREEN 3: LAYAR FORM — ApplicationScreen (Kriteria Rubrik: Form Input & Validation)
 - UI Components:
-    * Top Bar: Back Button, Title "Pengajuan sewa", Timestamp date ("28 September 2026").
+    * Top Bar: Back Button, Title "Pengajuan sewa", Timestamp date.
     * Step Progress Indicator: Horizontal progress bar (1. Pengajuan [Active] -> 2. Persetujuan -> 3. Pembayaran).
-    * Selected Kos Card Summary: Image thumbnail, Nama Kos ("Kos Cemara Residence"), No. Kamar & Price ("Kamar A-07 - Rp1.200.000 / bulan").
+    * Selected Kos Card Summary: Image thumbnail, Nama Kos, No. Kamar & Price.
     * Form Fields (Input Validation):
         - Nama Lengkap: OutlinedTextField (KeyboardType.Text, Required field).
-        - Nomor WhatsApp: OutlinedTextField (KeyboardType.Phone / Number, Numeric-only validation).
+        - Nomor WhatsApp: OutlinedTextField (KeyboardType.Phone, Numeric-only validation).
         - Alamat Email: OutlinedTextField (KeyboardType.Email, Email format regex validation).
-        - Durasi Sewa: Dropdown menu / Select box ("6 bulan").
-        - Mulai Tinggal: DatePicker field ("1 Okt 2026") dengan ikon Kalender.
+        - Durasi Sewa: OutlinedTextField (KeyboardType.Text).
+        - Mulai Tinggal: OutlinedTextField (KeyboardType.Text) dengan ikon Kalender.
         - Catatan Tambahan (opsional): Multiline OutlinedTextField.
-    * Information Banner: Warning/Notice box "Pemilik meninjau pengajuan terlebih dahulu. Pembayaran baru dilakukan setelah disetujui."
+    * Information Banner: Warning/Notice box.
     * Action Button: Button "Kirim Pengajuan" (Disabled jika field mandatory tidak valid / kosong).
 - State Behavior: Real-time validation, error state message (isError), dynamic button state.
 
 SCREEN 4: LAYAR UI FITUR NATIVE MOCKUP — PaymentScreen (Kriteria Rubrik: Native Feature UI Mockup)
 - UI Components:
-    * Top Bar: Back Button, Title "Pembayaran", Sub-header date ("30 September 2026").
-    * Status Banner: Alert box hijau "Pengajuan Nadia disetujui pada 29 Sep. Kamar A-07 siap ditempati mulai 1 Oktober."
+    * Top Bar: Back Button, Title "Pembayaran", Sub-header date.
+    * Status Banner: Alert box hijau "Pengajuan disetujui. Kamar siap ditempati."
     * Invoice Card Summary:
-        - Invoice ID & Status: "INV-202610-A07", Status Badge "Belum dibayar".
-        - Detail: "Kos Cemara Residence - A-07", "Oktober 2026 - Jatuh tempo 1 Okt 2026".
-        - Line Items: Sewa kamar (Rp1.200.000), Listrik (Rp100.000), Air (Rp50.000), Laundry 5kg (Rp75.000).
+        - Invoice ID & Status: "INV-202610-A07", Status Badge dinamis.
+        - Detail: Kos, kamar, periode, jatuh tempo.
+        - Line Items: Sewa, Listrik, Air, Laundry.
         - Total Pembayaran: Rp1.425.000.
-    * Payment Method Selection Box:
-        - Option 1: BCA Virtual Account ("8808 0123 4567 8901") + Copy Code Button (Simulasi Clipboard Native).
-        - Option 2: QRIS - Semua dompet digital + Scan QRIS Camera Frame Mockup (Statis/Dummy Kamera UI representasi fitur native).
-    * Auto Verification Info Card: "Pembayaran diverifikasi otomatis. Status tagihan berubah menjadi Lunas tanpa konfirmasi ke pemilik."
-    * Sticky Action Button: Button "Bayar Sekarang".
+    * Payment Method Selection Box (TabRow):
+        - Option 1: BCA Virtual Account + Copy Code Button (Clipboard Native).
+        - Option 2: QRIS Image (qris.png) — representasi mockup fitur native kamera.
+    * Auto Verification Info Card.
+    * Sticky Action Button: Button "Bayar Sekarang" dengan loading indicator.
+- State: selectedTab (VA/QRIS), isLoading, paymentStatus.
 
 SCREEN 5: LAYAR BEBAS PILIHAN — NotificationScreen (Kriteria Rubrik: Free Choice Screen)
 - UI Components:
-    * Top Bar: Title "Tagihan & notifikasi", Date & User context ("1 November 2026 - Nadia Putri").
-    * Active Bill Highlight Card:
-        - Month Badge: "November 2026", Due Badge: "Jatuh tempo hari ini".
-        - Total Amount: "Rp1.425.000".
-        - Bill ID: "INV-202611-A07 - Cemara Residence, A-07".
-        - Action Link: "Lihat & bayar tagihan ->".
-    * Filter Tabs Row: Filter pills (Semua [Selected], Tagihan, Pembayaran).
+    * Top Bar: Title "Tagihan & notifikasi", Date & User context.
+    * Active Bill Highlight Card (EarthyBrown).
+    * Filter Tabs Row: Filter pills (Semua, Tagihan, Pembayaran).
     * Activity Timeline List (LazyColumn):
-        - Notification Item 1: Bell Icon, Title "Ingat, bayar tagihan November", Desc "INV-202611-A07 - Rp1.425.000 jatuh tempo hari ini", Time "1 Nov 2026 - 08.00".
-        - Notification Item 2: Document Icon, Title "Tagihan baru sudah terbit", Desc "Tagihan November INV-202611-A07 siap dibayar lewat VA atau QRIS", Time "25 Okt 2026 - 08.00".
-        - Notification Item 3: Success Check Icon, Title "Pembayaran Oktober berhasil", Desc "INV-202610-A07 - Rp1.425.000 diterima melalui BCA VA", Time "30 Sep 2026 - 14.32", Badge "Lunas" (Green).
-    * Guarantee Information Box: "Tak perlu tanya pemilik. Bukti pembayaran dan status Lunas tersimpan otomatis di sini."
+        - Notification Item dengan icon berbeda per type (BILL/PAYMENT/INFO).
+        - Badge status (Lunas/Jatuh Tempo).
+    * Guarantee Information Box.
     * Bottom Navigation Bar: Tab "Tagihan" active state.
+- State: selectedFilter (Semua/Tagihan/Pembayaran).
 
 
-4. RUBRIK PENILAIAN
+4. RUBRIK PENILAIAN & BUKTI IMPLEMENTASI
 
-1. Screen Implementation (Rubrik 1)
-    - File: ui/screen/application/ApplicationScreen.kt
-    - Snippet:
+1. Screen Implementation (Rubrik 1 — Bukti 5 Layar Utama)
+    * Layar 1 (List Screen): ui/screen/search/SearchScreen.kt
+      @Composable
+      fun SearchScreen(viewModel: SearchViewModel = viewModel(), onKosClick: (Int) -> Unit) {
+      val kosList by viewModel.kosList.collectAsState()
+      LazyColumn { items(kosList) { kos -> KosCard(kos = kos, onClick = { onKosClick(kos.id) }) } }
+      }
+
+    * Layar 2 (Detail Screen): ui/screen/detail/DetailScreen.kt
+      @Composable
+      fun DetailScreen(
+      viewModel: DetailViewModel = viewModel(),
+      onBackClick: () -> Unit,
+      onRentClick: () -> Unit
+      ) {
+      val kos by viewModel.kos.collectAsState()
+      // Photo gallery, pricing breakdown, map preview, sticky "Ajukan Sewa"
+      }
+
+    * Layar 3 (Form Screen): ui/screen/application/ApplicationScreen.kt
       @Composable
       fun ApplicationScreen(
-      kosId: String?,
       viewModel: ApplicationViewModel = viewModel(),
-      onBack: () -> Unit,
-      onSubmit: () -> Unit
+      onBackClick: () -> Unit,
+      onSubmitSuccess: () -> Unit
       ) {
-      Scaffold(
-      topBar = { TopAppBar(title = { Text("Pengajuan sewa") }) }
-      ) { padding ->
-      Column(modifier = Modifier.padding(padding)) {
-      StepIndicator(currentStep = 1)
-      SelectedKosCard(kosName = "Kos Cemara Residence", room = "A-07", price = "Rp1.200.000 /bulan")
-      FormFields(viewModel = viewModel)
-      Button(
-      onClick = onSubmit,
-      enabled = viewModel.isFormValid()
-      ) {
+      Scaffold(topBar = { TopAppBar(title = { Text("Pengajuan sewa") }) }) { padding ->
+      Column {
+      StepItem("1", "Pengajuan", true)
+      FormFields(viewModel)
+      Button(onClick = onSubmitSuccess, enabled = viewModel.isFormValid) {
       Text("Kirim Pengajuan")
       }
       }
+      }
+      }
+
+    * Layar 4 (Native Mockup UI Screen): ui/screen/payment/PaymentScreen.kt
+      @Composable
+      fun PaymentScreen(
+      viewModel: PaymentViewModel = viewModel(),
+      onBackClick: () -> Unit,
+      onPaymentSuccess: () -> Unit
+      ) {
+      val inv = viewModel.invoice
+      // TabRow: BCA VA (Clipboard Native) / QRIS (Image Mockup)
+      // Button "Bayar Sekarang" dengan loading indicator
+      }
+
+    * Layar 5 (Free Choice Screen): ui/screen/notification/NotificationScreen.kt
+      @Composable
+      fun NotificationScreen(
+      viewModel: NotificationViewModel = viewModel(),
+      onBackClick: () -> Unit = {},
+      onTabSelected: (Int) -> Unit = {}
+      ) {
+      Column {
+      ActiveBillCard()
+      FilterChips(viewModel.selectedFilter, viewModel::setFilter)
+      LazyColumn { items(viewModel.billingList) { item -> NotificationCard(item) } }
       }
       }
 
@@ -184,59 +218,178 @@ SCREEN 5: LAYAR BEBAS PILIHAN — NotificationScreen (Kriteria Rubrik: Free Choi
     - File: ui/theme/Color.kt, ui/theme/Theme.kt
     - Snippet:
       val EarthyBrown = Color(0xFF6F5E4E)
-      val KostellaColorScheme = lightColorScheme(primary = EarthyBrown)
+      val GreenAccent = Color(0xFF10B981)
+      val KostellaColorScheme = lightColorScheme(primary = EarthyBrown, secondary = GreenAccent)
+      // Diterapkan di MainActivity: KostellaTheme { NavGraph() }
 
-3. State Management (Rubrik 3)
-    - File: ui/screen/application/ApplicationViewModel.kt
-    - Snippet:
+3. State Management (Rubrik 3 — Input, Seleksi, Loading)
+    - State Input Form: ui/screen/application/ApplicationViewModel.kt
       class ApplicationViewModel : ViewModel() {
       var fullName by mutableStateOf("")
       private set
       fun updateFullName(newVal: String) { fullName = newVal }
       }
 
+    - State Seleksi Filter: ui/screen/search/SearchViewModel.kt & notification/NotificationViewModel.kt
+      class SearchViewModel : ViewModel() {
+      private val _searchQuery = MutableStateFlow("")   // ← FIX: kosong, sesuai kode
+      val searchQuery = _searchQuery.asStateFlow()
+      fun updateSearchQuery(q: String) { _searchQuery.value = q }
+      }
+
+      // NotificationViewModel
+      var selectedFilter by mutableStateOf("Semua")
+      private set
+      fun setFilter(f: String) { selectedFilter = f }
+
+    - State Loading Verifikasi Pembayaran: ui/screen/payment/PaymentViewModel.kt
+      class PaymentViewModel : ViewModel() {
+      var isLoading by mutableStateOf(false)
+      private set
+      var paymentStatus by mutableStateOf("Belum dibayar")
+      private set
+
+          fun payNow() {
+              viewModelScope.launch {
+                  isLoading = true
+                  paymentStatus = "Menunggu Verifikasi"
+                  delay(1500) // simulasi verifikasi
+                  paymentStatus = "Lunas"
+                  isLoading = false
+              }
+          }
+      }
+
 4. Navigation & Argument Passing (Rubrik 4)
     - File: navigation/NavGraph.kt, navigation/ScreenRoutes.kt
-    - Snippet:
+    - Snippet (kosId dikirim dari Search → Detail):   // ← FIX: hapus "→ Application"
+      // ScreenRoutes.kt
+      sealed class ScreenRoutes(val route: String) {
+      object Search : ScreenRoutes("search")
+      object Detail : ScreenRoutes("detail/{kosId}") {
+      fun createRoute(kosId: Int) = "detail/$kosId"
+      }
+      object Application : ScreenRoutes("application")
+      object Payment : ScreenRoutes("payment")
+      object Notification : ScreenRoutes("notification")
+      }
+
+      // NavGraph.kt
       composable(
       route = ScreenRoutes.Detail.route,
       arguments = listOf(navArgument("kosId") { type = NavType.StringType })
       ) { backStackEntry ->
       val kosId = backStackEntry.arguments?.getString("kosId")
-      DetailScreen(kosId = kosId)
+      DetailScreen(
+      onBackClick = { navController.popBackStack() },
+      onRentClick = { navController.navigate(ScreenRoutes.Application.route) }
+      )
       }
 
-5. Form Input & Validation (Rubrik 5)
+5. Form Input & Validation dengan Appropriate Keyboard Type (Rubrik 5)
     - File: ui/screen/application/ApplicationScreen.kt
-    - Snippet:
+    - Snippet Field Validation & Keyboard Types:
+      // 1. Nama Lengkap (KeyboardType.Text)
       OutlinedTextField(
-      value = email,
-      onValueChange = { email = it },
-      label = { Text("Alamat Email") },
-      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-      isError = email.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+      value = viewModel.fullName,
+      onValueChange = { viewModel.updateFullName(it) },
+      label = { Text("Nama Lengkap *") },
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
       )
 
+      // 2. Nomor WhatsApp (KeyboardType.Phone)
+      OutlinedTextField(
+      value = viewModel.phoneNumber,
+      onValueChange = { viewModel.updatePhoneNumber(it) },
+      label = { Text("Nomor WhatsApp *") },
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone)
+      )
+
+      // 3. Email (KeyboardType.Email)
+      OutlinedTextField(
+      value = viewModel.email,
+      onValueChange = { viewModel.updateEmail(it) },
+      label = { Text("Alamat Email *") },
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+      isError = !viewModel.isEmailValid,
+      supportingText = {
+      if (!viewModel.isEmailValid) Text("Format email tidak valid", color = MaterialTheme.colorScheme.error)
+      }
+      )
+
+      // 4. Durasi Sewa (KeyboardType.Text)
+      OutlinedTextField(
+      value = viewModel.rentalDuration,
+      onValueChange = { viewModel.updateRentalDuration(it) },
+      label = { Text("Durasi Sewa") },
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text)
+      )
+
+      // 5. Mulai Tinggal (KeyboardType.Text + Ikon Kalender)
+      OutlinedTextField(
+      value = viewModel.startDate,
+      onValueChange = { viewModel.updateStartDate(it) },
+      label = { Text("Mulai Tinggal") },
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
+      trailingIcon = { Icon(Icons.Default.DateRange, contentDescription = null) }
+      )
+
+      // Submit Button Enabled Validation
       Button(
-      onClick = { /* Kirim Pengajuan */ },
-      enabled = fullName.isNotBlank() && phone.isNotBlank() && email.isNotBlank()
+      onClick = { onSubmitSuccess() },
+      enabled = viewModel.isFormValid
       ) {
       Text("Kirim Pengajuan")
       }
 
 6. Dummy Data (Rubrik 6)
-    - File: data/dummy/DummyData.kt, data/model/Kos.kt
+    - File: data/dummy/DummyData.kt, data/model/Kos.kt, Invoice.kt, NotificationItem.kt
     - Snippet:
       object DummyData {
       val kosList = listOf(
-      Kos(id = 1, name = "Kos Cemara Residence", price = "Rp1.200.000 /bulan", rating = 4.8, category = "Putri")
+      Kos(id = 1, name = "Kos Cemara Residence", price = "Rp1.200.000 /bulan",
+      rating = 4.8, category = "Putri · 3 kamar"),
+      Kos(id = 2, name = "Kos Taman Sari", price = "Rp1.350.000 /bulan",
+      rating = 4.7, category = "Campur · 2 kamar")
       )
+
+          val invoiceList = listOf(
+              Invoice(
+                  invoiceId = "INV-202610-A07",
+                  kosName = "Kos Cemara Residence",
+                  roomNumber = "A-07",
+                  period = "Oktober 2026",
+                  dueDate = "1 Okt 2026",
+                  rentAmount = 1200000,
+                  electricityFee = 100000,
+                  waterFee = 50000,
+                  laundryFee = 75000,
+                  totalAmount = 1425000,
+                  status = "Belum dibayar",
+                  vaNumber = "8808 0123 4567 8901"
+              )
+          )
+
+          val notificationList = listOf(
+              NotificationItem(id = "1", title = "Ingat, bayar tagihan November",
+                  description = "INV-202611-A07 - Rp1.425.000 jatuh tempo hari ini",
+                  timestamp = "1 Nov 2026 - 08.00", type = "BILL",
+                  statusBadge = "Jatuh Tempo", isPaid = false),
+              NotificationItem(id = "2", title = "Tagihan baru sudah terbit",
+                  description = "Tagihan November siap dibayar lewat VA atau QRIS",
+                  timestamp = "25 Okt 2026 - 08.00", type = "BILL",
+                  statusBadge = null, isPaid = false),
+              NotificationItem(id = "3", title = "Pembayaran Oktober berhasil",
+                  description = "INV-202610-A07 - Rp1.425.000 diterima melalui BCA VA",
+                  timestamp = "30 Sep 2026 - 14.32", type = "PAYMENT",
+                  statusBadge = "Lunas", isPaid = true)
+          )
       }
-   
+
 5. CHECKPOINT STATUS & BRANCHING PLAN
 
-- [x] CHECKPOINT 1: Foundation, M3 Theme Setup & Search List Screen (Branch: feature/cp1-search-list) -> COMPLETED
-- [x] CHECKPOINT 2: Navigation & Detail Kos Screen (Branch: feature/cp2-detail-screen) -> COMPLETED
-- [x] CHECKPOINT 3: Form Input & Validation / Pengajuan Sewa (Branch: feature/cp3-application-form) -> COMPLETED
-- [ ] CHECKPOINT 4: UI Fitur Native Mockup / Pembayaran QRIS (Branch: feature/cp4-payment-native-mockup) -> PENDING
-- [ ] CHECKPOINT 5: Free Choice Screen / Tagihan & Notifikasi & Final (Branch: feature/cp5-notifications-and-final) -> PENDING
+- [x] CHECKPOINT 1: Foundation, M3 Theme Setup & Search List Screen
+- [x] CHECKPOINT 2: Navigation & Detail Kos Screen
+- [x] CHECKPOINT 3: Form Input & Validation / Pengajuan Sewa
+- [x] CHECKPOINT 4: UI Fitur Native Mockup / Pembayaran QRIS
+- [x] CHECKPOINT 5: Free Choice Screen / Tagihan & Notifikasi & Final

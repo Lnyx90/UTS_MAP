@@ -8,7 +8,7 @@ import org.umn.utsmap.data.dummy.DummyData
 import org.umn.utsmap.data.model.Kos
 
 class SearchViewModel : ViewModel() {
-    private val _searchQuery = MutableStateFlow("UGM, Yogyakarta")
+    private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
 
     private val _kosList = MutableStateFlow(DummyData.kosList)
@@ -16,5 +16,13 @@ class SearchViewModel : ViewModel() {
 
     fun updateSearchQuery(query: String) {
         _searchQuery.value = query
+        _kosList.value = if (query.isEmpty()) {
+            DummyData.kosList
+        } else {
+            DummyData.kosList.filter {
+                it.name.contains(query, ignoreCase = true) ||
+                        it.address.contains(query, ignoreCase = true)
+            }
+        }
     }
 }
