@@ -80,7 +80,7 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Mengintegrasikan gambar mockup QRIS dan loading state verifikasi pembayaran.
 - Branch: `feature/cp4-payment-native-mockup`
 
-### Anggota Team - `[Abthal Akbar]` (`[00000121788]`) - Jika Ada
+### Anggota Team - `[Abthal Akbar]` (`[00000121788]`)
 
 **Screen 5: Notifikasi Tagihan dan Integrasi Final**
 
