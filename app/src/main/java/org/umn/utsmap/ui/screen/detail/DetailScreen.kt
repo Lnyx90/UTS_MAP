@@ -81,7 +81,6 @@ fun DetailScreen(
         if (kos == null) return@Scaffold
 
         val currentKos = kos!!
-        // Logika Ganjil / Genap
         val isOdd = currentKos.id % 2 != 0
         val mainImageRes = if (isOdd) R.drawable.kos1 else R.drawable.kos2
         val sideImageRes = if (isOdd) R.drawable.kos3 else R.drawable.kos4
@@ -94,7 +93,7 @@ fun DetailScreen(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Photo Gallery Grid Section (2 Gambar + Badge Indikator)
+            // Photo Gallery Grid Section
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -104,7 +103,6 @@ fun DetailScreen(
                     modifier = Modifier.fillMaxSize(),
                     horizontalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
-                    // Gambar Utama (Kiri)
                     Image(
                         painter = painterResource(id = mainImageRes),
                         contentDescription = currentKos.name,
@@ -114,8 +112,6 @@ fun DetailScreen(
                             .clip(RoundedCornerShape(16.dp)),
                         contentScale = ContentScale.Crop
                     )
-
-                    // Gambar Samping (Kanan)
                     Image(
                         painter = painterResource(id = sideImageRes),
                         contentDescription = "${currentKos.name} Detail",
@@ -127,7 +123,6 @@ fun DetailScreen(
                     )
                 }
 
-                // Badge Foto
                 Surface(
                     modifier = Modifier
                         .padding(12.dp)
@@ -222,7 +217,7 @@ fun DetailScreen(
                 Text(text = "• 50 m ke jalan utama kendaraan umum", fontSize = 14.sp, color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
 
-            // Map Image Section (Menggunakan map.png dari drawable)
+            // Map Image Section
             Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Text(text = "Peta Lokasi", fontWeight = FontWeight.Bold, fontSize = 16.sp)
                 Card(

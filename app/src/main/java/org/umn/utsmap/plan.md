@@ -5,7 +5,7 @@ PLAN.md — Development Roadmap & Architecture Kostella (UTS IF570)
 - Target Package: org.umn.utsmap
 - Tech Stack: Kotlin, Jetpack Compose, Material 3, Navigation Compose, ViewModel, StateFlow
 - Design System:
-    * Primary Color: Coklat Hangat / Earthy Brown (#6F5E4E atau #8B7D6B)
+    * Primary Color: Coklat Hangat / Earthy Brown (#6F5E4E)
     * Secondary / Accent Color: Green (#10B981)
     * Surface / Background Color: Off-white (#F9FAFB) & Dark Neutral (#1E293B)
     * Typography: Sans-serif / Inter
@@ -21,13 +21,16 @@ org.umn.utsmap/
 │
 ├── res/
 │   └── drawable/
-│       ├── [x] kos1.jpg (Asset Gambar Kos 1)
-│       └── [x] kos2.jpg (Asset Gambar Kos 2)
+│       ├── [x] kos1.jpg
+│       ├── [x] kos2.jpg
+│       ├── [x] kos3.jpg
+│       ├── [x] kos4.jpg
+│       └── [x] map.png
 │
 ├── data/
 │   ├── model/
 │   │   ├── [x] Kos.kt
-│   │   ├── [ ] ApplicationForm.kt
+│   │   ├── [x] ApplicationForm.kt
 │   │   ├── [ ] Invoice.kt
 │   │   └── [ ] NotificationItem.kt
 │   └── dummy/
@@ -43,7 +46,7 @@ org.umn.utsmap/
 │   │   ├── [x] KostellaBottomBar.kt
 │   │   ├── [x] KosCard.kt
 │   │   ├── [ ] NotificationCard.kt
-│   │   └── [ ] StepIndicator.kt
+│   │   └── [x] StepIndicator.kt
 │   └── screen/
 │       ├── search/
 │       │   ├── [x] SearchScreen.kt
@@ -52,8 +55,8 @@ org.umn.utsmap/
 │       │   ├── [x] DetailScreen.kt
 │       │   └── [x] DetailViewModel.kt
 │       ├── application/
-│       │   ├── [ ] ApplicationScreen.kt
-│       │   └── [ ] ApplicationViewModel.kt
+│       │   ├── [x] ApplicationScreen.kt
+│       │   └── [x] ApplicationViewModel.kt
 │       ├── payment/
 │       │   ├── [ ] PaymentScreen.kt
 │       │   └── [ ] PaymentViewModel.kt
@@ -148,10 +151,92 @@ SCREEN 5: LAYAR BEBAS PILIHAN — NotificationScreen (Kriteria Rubrik: Free Choi
     * Bottom Navigation Bar: Tab "Tagihan" active state.
 
 
-4. CHECKPOINT STATUS & BRANCHING PLAN
+4. RUBRIK PENILAIAN
+
+1. Screen Implementation (Rubrik 1)
+    - File: ui/screen/application/ApplicationScreen.kt
+    - Snippet:
+      @Composable
+      fun ApplicationScreen(
+      kosId: String?,
+      viewModel: ApplicationViewModel = viewModel(),
+      onBack: () -> Unit,
+      onSubmit: () -> Unit
+      ) {
+      Scaffold(
+      topBar = { TopAppBar(title = { Text("Pengajuan sewa") }) }
+      ) { padding ->
+      Column(modifier = Modifier.padding(padding)) {
+      StepIndicator(currentStep = 1)
+      SelectedKosCard(kosName = "Kos Cemara Residence", room = "A-07", price = "Rp1.200.000 /bulan")
+      FormFields(viewModel = viewModel)
+      Button(
+      onClick = onSubmit,
+      enabled = viewModel.isFormValid()
+      ) {
+      Text("Kirim Pengajuan")
+      }
+      }
+      }
+      }
+
+2. UI Theming (Rubrik 2)
+    - File: ui/theme/Color.kt, ui/theme/Theme.kt
+    - Snippet:
+      val EarthyBrown = Color(0xFF6F5E4E)
+      val KostellaColorScheme = lightColorScheme(primary = EarthyBrown)
+
+3. State Management (Rubrik 3)
+    - File: ui/screen/application/ApplicationViewModel.kt
+    - Snippet:
+      class ApplicationViewModel : ViewModel() {
+      var fullName by mutableStateOf("")
+      private set
+      fun updateFullName(newVal: String) { fullName = newVal }
+      }
+
+4. Navigation & Argument Passing (Rubrik 4)
+    - File: navigation/NavGraph.kt, navigation/ScreenRoutes.kt
+    - Snippet:
+      composable(
+      route = ScreenRoutes.Detail.route,
+      arguments = listOf(navArgument("kosId") { type = NavType.StringType })
+      ) { backStackEntry ->
+      val kosId = backStackEntry.arguments?.getString("kosId")
+      DetailScreen(kosId = kosId)
+      }
+
+5. Form Input & Validation (Rubrik 5)
+    - File: ui/screen/application/ApplicationScreen.kt
+    - Snippet:
+      OutlinedTextField(
+      value = email,
+      onValueChange = { email = it },
+      label = { Text("Alamat Email") },
+      keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+      isError = email.isNotEmpty() && !android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+      )
+
+      Button(
+      onClick = { /* Kirim Pengajuan */ },
+      enabled = fullName.isNotBlank() && phone.isNotBlank() && email.isNotBlank()
+      ) {
+      Text("Kirim Pengajuan")
+      }
+
+6. Dummy Data (Rubrik 6)
+    - File: data/dummy/DummyData.kt, data/model/Kos.kt
+    - Snippet:
+      object DummyData {
+      val kosList = listOf(
+      Kos(id = 1, name = "Kos Cemara Residence", price = "Rp1.200.000 /bulan", rating = 4.8, category = "Putri")
+      )
+      }
+   
+5. CHECKPOINT STATUS & BRANCHING PLAN
 
 - [x] CHECKPOINT 1: Foundation, M3 Theme Setup & Search List Screen (Branch: feature/cp1-search-list) -> COMPLETED
 - [x] CHECKPOINT 2: Navigation & Detail Kos Screen (Branch: feature/cp2-detail-screen) -> COMPLETED
-- [ ] CHECKPOINT 3: Form Input & Validation / Pengajuan Sewa (Branch: feature/cp3-application-form) -> PENDING
+- [x] CHECKPOINT 3: Form Input & Validation / Pengajuan Sewa (Branch: feature/cp3-application-form) -> COMPLETED
 - [ ] CHECKPOINT 4: UI Fitur Native Mockup / Pembayaran QRIS (Branch: feature/cp4-payment-native-mockup) -> PENDING
 - [ ] CHECKPOINT 5: Free Choice Screen / Tagihan & Notifikasi & Final (Branch: feature/cp5-notifications-and-final) -> PENDING
