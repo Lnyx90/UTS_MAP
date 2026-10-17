@@ -6,6 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import org.umn.utsmap.ui.screen.application.ApplicationScreen
 import org.umn.utsmap.ui.screen.detail.DetailScreen
 import org.umn.utsmap.ui.screen.search.SearchScreen
 
@@ -31,7 +32,15 @@ fun NavGraph() {
             DetailScreen(
                 onBackClick = { navController.popBackStack() },
                 onRentClick = {
-                    // Nanti di Checkpoint 3 kita arahkan ke ApplicationScreen
+                    navController.navigate(ScreenRoutes.Application.route)
+                }
+            )
+        }
+        composable(route = ScreenRoutes.Application.route) {
+            ApplicationScreen(
+                onBackClick = { navController.popBackStack() },
+                onSubmitSuccess = {
+                    // Nanti dilanjutkan ke Checkpoint 4 (PaymentScreen)
                 }
             )
         }
