@@ -22,12 +22,10 @@ Aplikasi dibangun dengan Kotlin dan Jetpack Compose, menggunakan Material 3 untu
 
 ## Group Members
 
-1. `[Nama Lengkap]` - `[NIM]`
-2. `[Nama Lengkap]` - `[NIM]`
-3. `[Nama Lengkap]` - `[NIM]`
-4. `[Nama Lengkap]` - `[NIM]`
-
-> Ganti placeholder di atas dengan nama dan NIM anggota kelompok final, dan hapus entri yang tidak digunakan.
+1. `[Abthal Akbar]` - `[00000121788]`
+2. `[Ceryne]` - `[00000135652]`
+3. `[Francent Jienarta]` - `[00000115728]`
+4. `[Josiah Maximus Suryadi]` - `[00000108749]`
 
 ## Team Workflow
 
@@ -43,7 +41,7 @@ Proyek diorganisir dalam beberapa checkpoint pengembangan, dengan tanggung jawab
 
 Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 
-### Anggota 1 - `[Nama Lengkap]` (`[NIM]`)
+### Anggota 1 - `[Ceryne]` (`[NIM]`)
 
 **Checkpoint 1: Foundation, Tema Material 3, dan Search List**
 
@@ -52,7 +50,7 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Mengembangkan `SearchScreen`, `SearchViewModel`, `KosCard`, dan `KostellaBottomBar`.
 - Branch: `feature/cp1-search-list`
 
-### Anggota 2 - `[Nama Lengkap]` (`[NIM]`)
+### Anggota 2 - `[Francent Jienarta]` (`[00000115728]`)
 
 **Checkpoint 2: Navigasi dan Detail Kos**
 
@@ -62,7 +60,7 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Menambahkan preview peta statis.
 - Branch: `feature/cp2-detail-screen`
 
-### Anggota 3 - `[Nama Lengkap]` (`[NIM]`)
+### Anggota 3 - `[Abthal Akbar]` (`[00000121788]`)
 
 **Checkpoint 3: Form Pengajuan Sewa dan Validasi**
 
@@ -72,7 +70,7 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Mengonfigurasi tipe keyboard yang sesuai untuk field form.
 - Branch: `feature/cp3-application-form`
 
-### Anggota 4 - `[Nama Lengkap]` (`[NIM]`)
+### Anggota 4 - `[Josiah Maximus Suryadi]` (`[00000108749]`)
 
 **Checkpoint 4: Prototipe UI Pembayaran**
 
@@ -82,7 +80,7 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Mengintegrasikan gambar mockup QRIS dan loading state verifikasi pembayaran.
 - Branch: `feature/cp4-payment-native-mockup`
 
-### Anggota 5 - `[Nama Lengkap]` (`[NIM]`) - Jika Ada
+### Anggota 5 - `[Abthal Akbar]` (`[00000121788]`) - Jika Ada
 
 **Checkpoint 5: Notifikasi Tagihan dan Integrasi Final**
 
@@ -156,31 +154,31 @@ Tambahkan screenshot yang sesuai ke proyek dan pastikan nama file cocok dengan r
 
 Menampilkan daftar kos, search bar, filter chips, dan card listing dengan foto, nama, harga, rating, dan jarak.
 
-![Search Screen](./sc1.png)
+![Search Screen](./demo/sc1.png)
 
 ### 2. Detail Screen
 
 Menampilkan foto kos, rincian biaya sewa, fasilitas, preview peta, dan tombol **Ajukan Sewa**.
 
-![Detail Screen](./sc2.png)
+![Detail Screen](./demo/sc2.png)
 
 ### 3. Rental Application Screen
 
 Menampilkan form pengajuan sewa, step indicator, ringkasan kos, dan validasi field real-time.
 
-![Rental Application Screen](./sc3.png)
+![Rental Application Screen](./demo/sc3.png)
 
 ### 4. Payment Screen
 
 Mendemonstrasikan prototipe UI pembayaran BCA Virtual Account dan QRIS, termasuk interaksi copy-code dan loading state verifikasi.
 
-![Payment Screen](./sc4.png)
+![Payment Screen](./demo/sc4.png)
 
 ### 5. Notifications Screen
 
 Menampilkan notifikasi tagihan dan status pembayaran, dengan filter untuk semua notifikasi, tagihan, dan pembayaran, serta badge status lunas.
 
-![Notifications Screen](./sc5.png)
+![Notifications Screen](./demo/sc5.png)
 
 ## Technology Stack
 
@@ -213,5 +211,5 @@ Menampilkan notifikasi tagihan dan status pembayaran, dengan filter untuk semua 
 
 Aplikasi akan terbuka pada Search Screen.
 
-© 2026 Kostella Team - IF570L Lab Mobile Application Programming
+© 2026 Kostelle Team - IF570L Lab Mobile Application Programming
 Universitas Multimedia Nusantara
