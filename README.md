@@ -41,18 +41,18 @@ Proyek diorganisir dalam beberapa checkpoint pengembangan, dengan tanggung jawab
 
 Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 
-### Anggota 1 - `[Ceryne]` (`[00000135652]`)
+### Anggota Team - `[Ceryne]` (`[00000135652]`)
 
-**Checkpoint 1: Foundation, Tema Material 3, dan Search List**
+**Screen 1: Foundation, Tema Material 3, dan Search List**
 
 - Menyiapkan struktur proyek dan tema Material 3 custom.
 - Mengimplementasikan `Color.kt`, `Type.kt`, `Shape.kt`, dan `Theme.kt`.
 - Mengembangkan `SearchScreen`, `SearchViewModel`, `KosCard`, dan `KostellaBottomBar`.
 - Branch: `feature/cp1-search-list`
 
-### Anggota 2 - `[Francent Jienarta]` (`[00000115728]`)
+### Anggota Team - `[Francent Jienarta]` (`[00000115728]`)
 
-**Checkpoint 2: Navigasi dan Detail Kos**
+**Screen 2: Navigasi dan Detail Kos**
 
 - Mengimplementasikan `NavGraph` dan `ScreenRoutes`.
 - Mengembangkan `DetailScreen` dan `DetailViewModel`.
@@ -60,9 +60,9 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Menambahkan preview peta statis.
 - Branch: `feature/cp2-detail-screen`
 
-### Anggota 3 - `[Abthal Akbar]` (`[00000121788]`)
+### Anggota Team - `[Abthal Akbar]` (`[00000121788]`)
 
-**Checkpoint 3: Form Pengajuan Sewa dan Validasi**
+**Screen 3: Form Pengajuan Sewa dan Validasi**
 
 - Mengembangkan `ApplicationScreen` dan `ApplicationViewModel`.
 - Mengimplementasikan `StepIndicator`.
@@ -70,9 +70,9 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Mengonfigurasi tipe keyboard yang sesuai untuk field form.
 - Branch: `feature/cp3-application-form`
 
-### Anggota 4 - `[Josiah Maximus Suryadi]` (`[00000108749]`)
+### Anggota Team - `[Josiah Maximus Suryadi]` (`[00000108749]`)
 
-**Checkpoint 4: Prototipe UI Pembayaran**
+**Screen 4: Prototipe UI Pembayaran**
 
 - Mengembangkan `PaymentScreen` dan `PaymentViewModel`.
 - Mengimplementasikan `Invoice.kt`.
@@ -80,9 +80,9 @@ Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 - Mengintegrasikan gambar mockup QRIS dan loading state verifikasi pembayaran.
 - Branch: `feature/cp4-payment-native-mockup`
 
-### Anggota 5 - `[Abthal Akbar]` (`[00000121788]`) - Jika Ada
+### Anggota Team - `[Abthal Akbar]` (`[00000121788]`) - Jika Ada
 
-**Checkpoint 5: Notifikasi Tagihan dan Integrasi Final**
+**Screen 5: Notifikasi Tagihan dan Integrasi Final**
 
 - Mengembangkan `NotificationScreen` dan `NotificationViewModel`.
 - Mengimplementasikan `NotificationCard` dan `NotificationItem.kt`.
