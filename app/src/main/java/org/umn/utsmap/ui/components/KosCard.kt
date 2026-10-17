@@ -1,5 +1,7 @@
 package org.umn.utsmap.ui.components
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -15,13 +17,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.umn.utsmap.R
 import org.umn.utsmap.data.model.Kos
 import org.umn.utsmap.ui.theme.EarthyBrown
 import org.umn.utsmap.ui.theme.OutlineBorder
-import androidx.compose.foundation.BorderStroke
 
 @Composable
 fun KosCard(kos: Kos, onClick: () -> Unit) {
@@ -40,17 +43,20 @@ fun KosCard(kos: Kos, onClick: () -> Unit) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(180.dp)
-                    .background(Color.LightGray)
             ) {
-                // Placeholder mockup image view (nanti bisa diganti painterResource)
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .background(EarthyBrown.copy(alpha = 0.2f)),
-                    contentAlignment = Alignment.Center
-                ) {
-                    Text(text = kos.name, color = EarthyBrown, fontWeight = FontWeight.Bold)
+                // Penentuan gambar berdasarkan kos.id (kos1 atau kos2)
+                val imageResId = if (kos.id == 1) {
+                    R.drawable.kos1
+                } else {
+                    R.drawable.kos2
                 }
+
+                Image(
+                    painter = painterResource(id = imageResId),
+                    contentDescription = kos.name,
+                    modifier = Modifier.fillMaxSize(),
+                    contentScale = ContentScale.Crop
+                )
 
                 // Category Badge (Top-Left)
                 Surface(

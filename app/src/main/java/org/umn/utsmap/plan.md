@@ -21,8 +21,8 @@ org.umn.utsmap/
 │
 ├── res/
 │   └── drawable/
-│       ├── [x] cemara_residence.png (Placeholder / Asset Gambar Kos 1)
-│       └── [x] taman_sari.png (Placeholder / Asset Gambar Kos 2)
+│       ├── [x] kos1.jpg (Asset Gambar Kos 1)
+│       └── [x] kos2.jpg (Asset Gambar Kos 2)
 │
 ├── data/
 │   ├── model/
@@ -49,8 +49,8 @@ org.umn.utsmap/
 │       │   ├── [x] SearchScreen.kt
 │       │   └── [x] SearchViewModel.kt
 │       ├── detail/
-│       │   ├── [ ] DetailScreen.kt
-│       │   └── [ ] DetailViewModel.kt
+│       │   ├── [x] DetailScreen.kt
+│       │   └── [x] DetailViewModel.kt
 │       ├── application/
 │       │   ├── [ ] ApplicationScreen.kt
 │       │   └── [ ] ApplicationViewModel.kt
@@ -62,8 +62,8 @@ org.umn.utsmap/
 │           └── [ ] NotificationViewModel.kt
 │
 └── navigation/
-├── [ ] NavGraph.kt
-└── [ ] ScreenRoutes.kt
+├── [x] NavGraph.kt
+└── [x] ScreenRoutes.kt
 
 
 3. DETAILED SCREEN SPECIFICATIONS (5 REQUIREMENT SCREENS)
@@ -151,7 +151,7 @@ SCREEN 5: LAYAR BEBAS PILIHAN — NotificationScreen (Kriteria Rubrik: Free Choi
 4. CHECKPOINT STATUS & BRANCHING PLAN
 
 - [x] CHECKPOINT 1: Foundation, M3 Theme Setup & Search List Screen (Branch: feature/cp1-search-list) -> COMPLETED
-- [ ] CHECKPOINT 2: Navigation & Detail Kos Screen (Branch: feature/cp2-detail-screen) -> PENDING
+- [x] CHECKPOINT 2: Navigation & Detail Kos Screen (Branch: feature/cp2-detail-screen) -> COMPLETED
 - [ ] CHECKPOINT 3: Form Input & Validation / Pengajuan Sewa (Branch: feature/cp3-application-form) -> PENDING
 - [ ] CHECKPOINT 4: UI Fitur Native Mockup / Pembayaran QRIS (Branch: feature/cp4-payment-native-mockup) -> PENDING
 - [ ] CHECKPOINT 5: Free Choice Screen / Tagihan & Notifikasi & Final (Branch: feature/cp5-notifications-and-final) -> PENDING
