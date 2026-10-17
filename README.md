@@ -145,8 +145,6 @@ org.umn.utsmap/
 
 ## Demo Screenshots
 
-Tambahkan screenshot yang sesuai ke proyek dan pastikan nama file cocok dengan referensi di bawah.
-
 ### 1. Search Screen
 
 Menampilkan daftar kos, search bar, filter chips, dan card listing dengan foto, nama, harga, rating, dan jarak.
