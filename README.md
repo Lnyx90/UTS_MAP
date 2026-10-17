@@ -39,8 +39,6 @@ Proyek diorganisir dalam beberapa checkpoint pengembangan, dengan tanggung jawab
 
 ## Individual Contributions
 
-Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
-
 ### Anggota Team - `[Ceryne]` (`[00000135652]`)
 
 **Screen 1: Foundation, Tema Material 3, dan Search List**
@@ -97,7 +95,6 @@ Package aplikasi: `org.umn.utsmap`
 org.umn.utsmap/
 ├── MainActivity.kt
 ├── PLAN.md
-├── README.txt
 ├── res/
 │   └── drawable/
 │       ├── kos1.jpg
