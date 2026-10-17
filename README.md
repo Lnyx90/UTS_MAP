@@ -41,7 +41,7 @@ Proyek diorganisir dalam beberapa checkpoint pengembangan, dengan tanggung jawab
 
 Sesuaikan nama dan NIM di bawah dengan pembagian tugas aktual.
 
-### Anggota 1 - `[Ceryne]` (`[NIM]`)
+### Anggota 1 - `[Ceryne]` (`[00000135652]`)
 
 **Checkpoint 1: Foundation, Tema Material 3, dan Search List**
 
