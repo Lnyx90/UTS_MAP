@@ -9,15 +9,10 @@ import org.umn.utsmap.data.model.NotificationItem
 class NotificationViewModel : ViewModel() {
     var selectedFilter by mutableStateOf("Semua")
         private set
-
-    // Simulasi durasi sewa dari ApplicationScreen (misal: "6 Bulan")
     var rentalDurationMonths by mutableStateOf(6)
         private set
-
-    // Daftar tagihan dinamis berdasarkan durasi bulan
     val billingList: List<NotificationItem> by lazy {
         val list = mutableListOf<NotificationItem>()
-        // Bulan pertama (Oktober 2026) - Sudah Lunas via Pembayaran Mockup CP4
         list.add(
             NotificationItem(
                 id = "INV-202610-A07",
@@ -29,7 +24,6 @@ class NotificationViewModel : ViewModel() {
                 isPaid = true
             )
         )
-        // Bulan-bulan berikutnya sesuai durasi sewa
         val months = listOf("November", "Desember", "Januari", "Februari", "Maret", "April")
         for (i in 1 until rentalDurationMonths) {
             val monthName = if (i < months.size) months[i] else "Bulan ke-${i+1}"
@@ -53,7 +47,6 @@ class NotificationViewModel : ViewModel() {
     }
 
     fun setRentalDuration(durationStr: String) {
-        // Parsing angka dari string seperti "6 Bulan" -> 6
         val digits = durationStr.filter { it.isDigit() }.toIntOrNull()
         if (digits != null) {
             rentalDurationMonths = digits

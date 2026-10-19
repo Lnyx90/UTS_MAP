@@ -44,7 +44,6 @@ fun KosCard(kos: Kos, onClick: () -> Unit) {
                     .fillMaxWidth()
                     .height(180.dp)
             ) {
-                // Penentuan gambar berdasarkan kos.id (kos1 atau kos2)
                 val imageResId = if (kos.id == 1) {
                     R.drawable.kos1
                 } else {

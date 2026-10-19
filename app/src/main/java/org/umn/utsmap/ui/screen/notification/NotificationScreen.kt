@@ -135,7 +135,6 @@ fun NotificationScreen(
                 }
             }
 
-            // LazyColumn
             Text(
                 text = "Aktivitas & Riwayat (${viewModel.billingList.size} items)",
                 fontWeight = FontWeight.Bold,

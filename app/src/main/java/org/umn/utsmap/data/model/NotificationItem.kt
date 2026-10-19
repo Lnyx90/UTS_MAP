@@ -5,7 +5,7 @@ data class NotificationItem(
     val title: String,
     val description: String,
     val timestamp: String,
-    val type: String, // "BILL", "PAYMENT", "INFO"
-    val statusBadge: String? = null, // "Lunas", "Jatuh Tempo", dll
+    val type: String,
+    val statusBadge: String? = null,
     val isPaid: Boolean = false
 )

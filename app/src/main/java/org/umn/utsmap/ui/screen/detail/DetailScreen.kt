@@ -93,7 +93,6 @@ fun DetailScreen(
                 .padding(20.dp),
             verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
-            // Photo Gallery Grid Section
             Box(
                 modifier = Modifier
                     .fillMaxWidth()

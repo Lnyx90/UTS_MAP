@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 import org.umn.utsmap.data.model.Invoice
 
 class PaymentViewModel : ViewModel() {
-    var selectedTab by mutableStateOf(0) // 0: Virtual Account, 1: QRIS
+    var selectedTab by mutableStateOf(0)
         private set
 
     var paymentStatus by mutableStateOf("Belum dibayar")

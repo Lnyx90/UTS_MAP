@@ -11,6 +11,6 @@ data class Invoice(
     val waterFee: Int,
     val laundryFee: Int,
     val totalAmount: Int,
-    val status: String, // "Belum dibayar" atau "Lunas"
+    val status: String,
     val vaNumber: String
 )
